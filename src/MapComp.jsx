@@ -1,108 +1,178 @@
+1
+import React, { useEffect, useRef } from "react";
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
-
-import React, { useEffect, useRef } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css'; // Ensure Mapbox CSS is imported
+import {
+  FullscreenControl,
+  GeolocateControl,
+  NavigationControl,
+  Popup,
+} from "mapbox-gl"; 
 
 const MapComp = () => {
   const mapContainerRef = useRef(null);
+  const popup = new Popup();
 
   useEffect(() => {
-    mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA';
+    mapboxgl.accessToken =
+      "pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA";
 
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: 'mapbox://styles/khandanish/clvam8pkn00rj01qp374q8pex',
+      style: "mapbox://styles/khandanish/clvam8pkn00rj01qp374q8pex",
       center: [78.9629, 23.5937],
-      zoom: 4
+      zoom: 4,
     });
 
-    map.on('load', () => {
-      map.fitBounds([[68.1766451354, 6.75492974974], [97.4025614766, 35.4940095078]]);
+    const fullscreenControl = new FullscreenControl();
+    map.addControl(fullscreenControl, "top-left");
 
-      // Add Indian state data source (replace 'indian-states' with your data source name)
-      map.addSource('indian-states', {
-        type: 'geojson',
-        data: '/Indianstates.geojson' // Path to your GeoJSON file
-      });
-
-      // Add layer for Indian states
-    //   map.addLayer({
-    //     id: 'states-layer',
-    //     type: 'fill',
-    //     source: 'indian-states',
-    //     paint: {
-    //       'fill-color': 'red',
-    //       'fill-opacity': 0.6
-    //     }
-    //   });
-
-    map.addLayer({
-        id: 'states-layer',
-        type: 'fill',
-        source: 'indian-states',
-        paint: {
-          'fill-color': [
-            'interpolate',
-            ['linear'],
-            ['get', 'density'], // Replace 'density' with the property in your GeoJSON that you want to visualize
-            0, '#f0f9e8',
-            100, '#bae4bc',
-            500, '#7bccc4',
-            1000, '#43a2ca',
-            2000, '#0868ac'
-          ],
-          'fill-opacity': 0.7
-        }
-      });
-
-      // Add hover effect
-    //   map.on('mousemove', 'states-layer', (e) => {
-    //     map.getCanvas().style.cursor = 'pointer';
-
-    //     const state = e.features[0];
-    //     const density = state.properties.density; // Assuming this property exists in your data
-    //     const name = state.properties.name; // Assuming this property holds the state name
-
-    //     map.setFilter('states-layer', ['==', 'name', name]);
-
-    //     new mapboxgl.Popup()
-    //       .setLngLat(e.lngLat)
-    //       .setHTML(`<h3>${name}</h3><p>Population: ${density} per sq. km</p>`)
-    //       .addTo(map);
-    //   });
-
-
-    map.on('mousemove', 'states-layer', (e) => {
-        if (!map.getPopup()) {
-          const state = e.features[0];
-          const density = state.properties.density; // Replace 'density' with your actual property name
-          const name = state.properties.name; // Replace 'name' with the state name property in your GeoJSON
-      
-          new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(`<h3>${name}</h3><p>Density: ${density} per sq. km</p>`)
-            .addTo(map);
-        }
-      });
-      
-      
-   
-      map.on('mouseleave', 'states-layer', () => {
-        map.getCanvas().style.cursor = '';
-        map.setFilter('states-layer', ['==', 'name', '']);
-      });
+    const geolocateControl = new GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true,
+      },
+      trackUserLocation: true,
     });
-    // map.on('mouseleave', 'states-layer', () => {
-    //     map.getCanvas().style.cursor = '';
-    //     map.closePopup();
-    //   });
-    // });
+    map.addControl(geolocateControl);
 
-    return () => map.remove(); // Clean up on unmount
+    const navigationControl = new NavigationControl({
+      showCompass: true,
+      showZoom: true,
+      visualizePitch: true,
+    });
+    map.addControl(navigationControl, "top-left");
+
+    map.on("load", () => {
+      map.addSource("places", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: [],
+        },
+      });
+
+      map.setFog({});
+
+      fetch("./india_state_geo.json")
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          map.addSource("states", {
+            type: "geojson",
+            data: data,
+          });
+
+          map.addLayer({
+            id: "states-layer",
+            type: "fill",
+            source: "states",
+            layout: {},
+            paint: {
+              "fill-color": [
+                "case",
+                ["==", ["get", "NAME_1"], "Gujarat"],
+                "red",
+                ["==", ["get", "NAME_1"], "Haryana"],
+                "green",
+                ["==", ["get", "NAME_1"], "Delhi"],
+                "#fcba03",
+                ["==", ["get", "NAME_1"], "Goa"],
+                "#727551",
+                ["==", ["get", "NAME_1"], "Himachal Pradesh"],
+                "#87e689",
+                ["==", ["get", "NAME_1"], "Jammu and Kashmir"],
+                "#27a9ba",
+                ["==", ["get", "NAME_1"], "Jharkhand"],
+                "#4e527a",
+                ["==", ["get", "NAME_1"], "Karnataka"],
+                "#6f3799",
+                ["==", ["get", "NAME_1"], "Kerala"],
+                "#91475d",
+                ["==", ["get", "NAME_1"], "Madhya Pradesh"],
+                "#787777",
+                ["==", ["get", "NAME_1"], "Maharashtra"],
+                "#e6b0a5",
+                ["==", ["get", "NAME_1"], "Manipur"],
+                "#9e9b4d",
+                ["==", ["get", "NAME_1"], "Meghalaya"],
+                "#5f8754",
+                ["==", ["get", "NAME_1"], "Mizoram"],
+                "#d5edce",
+                ["==", ["get", "NAME_1"], "Nagaland"],
+                "#bcf5ea",
+                ["==", ["get", "NAME_1"], "Orissa"],
+                "#5fa4ad",
+                ["==", ["get", "NAME_1"], "Puducherry"],
+                "#4e7091",
+                ["==", ["get", "NAME_1"], "Punjab"],
+                "#5d74c7",
+                ["==", ["get", "NAME_1"], "Rajasthan"],
+                "#887ff0",
+                ["==", ["get", "NAME_1"], "Sikkim"],
+                "#775aa3",
+                ["==", ["get", "NAME_1"], "Tamil Nadu"],
+                "#a754b8",
+                ["==", ["get", "NAME_1"], "Tripura"],
+                "#782c6f",
+                ["==", ["get", "NAME_1"], "Uttar Pradesh"],
+                "#233136",
+                ["==", ["get", "NAME_1"], "Uttaranchal"],
+                "#7c848f",
+                ["==", ["get", "NAME_1"], "West Bengal"],
+                "#730b18",
+                ["==", ["get", "NAME_1"], "Andaman and Nicobar"],
+                "#733c0b",
+                ["==", ["get", "NAME_1"], "Andhra Pradesh"],
+                "#544104",
+                ["==", ["get", "NAME_1"], "Arunachal Pradesh"],
+                "#6f7d06",
+                ["==", ["get", "NAME_1"], "Assam"],
+                "#2a7a0c",
+                ["==", ["get", "NAME_1"], "Bihar"],
+                "#3f5438",
+                ["==", ["get", "NAME_1"], "Chandigarh"],
+                "#41baa8",
+                ["==", ["get", "NAME_1"], "Chhattisgarh"],
+                "#2b5d8f",
+                ["==", ["get", "NAME_1"], "Dadra and Nagar Haveli"],
+                "#311d52",
+                ["==", ["get", "NAME_1"], "Daman and Diu"],
+                "#250726",
+                "white",
+              ],
+              "fill-opacity": 1,
+            },
+          });
+
+          map.on("mouseenter", "states-layer", (e) => {
+            map.getCanvas().style.cursor = "pointer";
+            const stateName = e.features[0].properties.NAME_1;
+            popup.setLngLat(e.lngLat).setHTML(stateName).addTo(map);
+          });
+
+          map.on("mouseleave", "states-layer", () => {
+            map.getCanvas().style.cursor = "";
+            popup.remove();
+          });
+        })
+        .catch((error) => console.error("Error fetching GeoJSON:", error));
+    });
+
+    map.addControl(
+      new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl,
+      })
+    );
+
+    return () => map.remove();
   }, []);
 
-  return <div ref={mapContainerRef} style={{ height: '100vh', width: '100%' }} />;
+  return (
+    <div ref={mapContainerRef} style={{ height: "100vh", width: "100%" }} />
+  );
 };
 
 export default MapComp;
@@ -110,280 +180,523 @@ export default MapComp;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useEffect, useRef } from 'react';
-// import mapboxgl from 'mapbox-gl';
+//specifti dsitct color 3
+
+// import React, { useEffect, useRef } from "react";
+// import mapboxgl from "mapbox-gl";
+// import "mapbox-gl/dist/mapbox-gl.css";
+// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+// import {
+//   FullscreenControl,
+//   GeolocateControl,
+//   NavigationControl,
+//   Popup,
+// } from "mapbox-gl";
+
+// const MapComp = () => {
+//   const mapContainerRef = useRef(null);
+//   const popup = new Popup();
+
+//   useEffect(() => {
+//     mapboxgl.accessToken = "pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA";
+
+//     const map = new mapboxgl.Map({
+//       container: mapContainerRef.current,
+//       style: "mapbox://styles/khandanish/clvam8pkn00rj01qp374q8pex",
+//       center: [78.9629, 23.5937],
+//       zoom: 4,
+//     });
+
+//     map.addControl(new FullscreenControl(), "top-left");
+//     map.addControl(
+//       new GeolocateControl({
+//         positionOptions: {
+//           enableHighAccuracy: true,
+//         },
+//         trackUserLocation: true,
+//       })
+//     );
+//     map.addControl(new NavigationControl({ showCompass: true, showZoom: true, visualizePitch: true }), "top-left");
+
+//     map.on("load", () => {
+//       map.addSource("places", {
+//         type: "geojson",
+//         data: {
+//           type: "FeatureCollection",
+//           features: [],
+//         },
+//       });
+
+//       map.setFog({});
+
+//       fetch("./indiandistrict.geojson")
+//         .then((response) => response.json())
+//         .then((data) => {
+//           map.addSource("districts", {
+//             type: "geojson",
+//             data,
+//           });
+
+//           map.addLayer({
+//             id: "districts-layer",
+//             type: "fill",
+//             source: "districts",
+//             layout: {},
+//             paint: {
+//               "fill-color": [
+//                 "match",
+//                 ["get", "NAME_2"],
+//                 // Add specific colors for each district in Uttar Pradesh
+//                 "Agra", "#e6194b",
+//                 "Aligarh", "#3cb44b",
+//                 "Allahabad", "#ffe119",
+//                 "Ambedkar Nagar", "#4363d8",
+//                 "Amethi", "#f58231",
+//                 "Amroha", "#911eb4",
+//                 "Auraiya", "#46f0f0",
+//                 "Azamgarh", "#f032e6",
+//                 "Baghpat", "#bcf60c",
+//                 "Bahraich", "#fabebe",
+//                 "Ballia", "#008080",
+//                 "Balrampur", "#e6beff",
+//                 "Banda", "#9a6324",
+//                 "Barabanki", "#fffac8",
+//                 "Bareilly", "#800000",
+//                 "Basti", "#aaffc3",
+//                 "Bhadohi", "#808000",
+//                 "Bijnor", "#ffd8b1",
+//                 "Budaun", "#000075",
+//                 "Bulandshahr", "#808080",
+//                 "Chandauli", "#e6194b",
+//                 "Chitrakoot", "#3cb44b",
+//                 "Deoria", "#ffe119",
+//                 "Etah", "#4363d8",
+//                 "Etawah", "#f58231",
+//                 "Ayodhya", "#911eb4",
+//                 "Farrukhabad", "#46f0f0",
+//                 "Fatehpur", "#f032e6",
+//                 "Firozabad", "#bcf60c",
+//                 "Gautam Buddh Nagar", "#fabebe",
+//                 "Ghaziabad", "#008080",
+//                 "Ghazipur", "black",
+//                 "Gonda", "#9a6324",
+//                 "Gorakhpur", "#fffac8",
+//                 "Hamirpur", "#800000",
+//                 "Hapur", "#aaffc3",
+//                 "Hardoi", "#808000",
+//                 "Hathras", "#ffd8b1",
+//                 "Jalaun", "#000075",
+//                 "Jaunpur", "#808080",
+//                 "Jhansi", "#e6194b",
+//                 "Kannauj", "#3cb44b",
+//                 "Kanpur Dehat", "#ffe119",
+//                 "Kanpur Nagar", "#4363d8",
+//                 "Kasganj", "#f58231",
+//                 "Kaushambi", "#911eb4",
+//                 "Kushinagar", "#46f0f0",
+//                 "Lakhimpur Kheri", "#f032e6",
+//                 "Lalitpur", "#bcf60c",
+//                 "Lucknow", "#fabebe",
+//                 "Maharajganj", "#008080",
+//                 "Mahoba", "#e6beff",
+//                 "Mainpuri", "#9a6324",
+//                 "Mathura", "#fffac8",
+//                 "Mau", "#800000",
+//                 "Meerut", "#aaffc3",
+//                 "Mirzapur", "#808000",
+//                 "Moradabad", "#ffd8b1",
+//                 "Muzaffarnagar", "#000075",
+//                 "Pilibhit", "#808080",
+//                 "Pratapgarh", "#e6194b",
+//                 "Raebareli", "#3cb44b",
+//                 "Rampur", "#ffe119",
+//                 "Saharanpur", "#4363d8",
+//                 "Sambhal", "#f58231",
+//                 "Sant Kabir Nagar", "#911eb4",
+//                 "Shahjahanpur", "#46f0f0",
+//                 "Shamli", "#f032e6",
+//                 "Shrawasti", "#bcf60c",
+//                 "Siddharthnagar", "#fabebe",
+//                 "Sitapur", "#008080",
+//                 "Sonbhadra", "#e6beff",
+//                 "Sultanpur", "#9a6324",
+//                 "Unnao", "#fffac8",
+//                 "Varanasi", "#800000",
+//                 "Araria", "#4363d8",
+//                 "Arwal", "#f58231",
+//                 "Aurangabad", "#911eb4",
+//                 "Banka", "#46f0f0",
+//                 "Begusarai", "#f032e6",
+//                 "Bhagalpur", "#bcf60c",
+//                 "Bhojpur", "#fabebe",
+//                 "Buxar", "#008080",
+//                 "Darbhanga", "#e6beff",
+//                 "East Champaran", "#9a6324",
+//                 "Gaya", "#fffac8",
+//                 "Gopalganj", "#800000",
+//                 "Jamui", "#aaffc3",
+//                 "Jehanabad", "#808000",
+//                 "Kaimur", "#ffd8b1",
+//                 "Katihar", "#000075",
+//                 "Khagaria", "#808080",
+//                 "Kishanganj", "#e6194b",
+//                 "Lakhisarai", "#3cb44b",
+//                 "Madhepura", "#ffe119",
+//                 "Madhubani", "#4363d8",
+//                 "Munger", "#f58231",
+//                 "Muzaffarpur", "#911eb4",
+//                 "Nalanda", "#46f0f0",
+//                 "Nawada", "#f032e6",
+//                 "Patna", "#bcf60c",
+//                 "Purnia", "#fabebe",
+//                 "Rohtas", "#008080",
+//                 "Saharsa", "#e6beff",
+//                 "Samastipur", "#9a6324",
+//                 "Saran", "#fffac8",
+//                 "Sheikhpura", "#800000",
+//                 "Sheohar", "#aaffc3",
+//                 "Sitamarhi", "#808000",
+//                 "Siwan", "#ffd8b1",
+//                 "Supaul", "#000075",
+//                 "Vaishali", "#808080",
+//                 "West Champaran", "#e6194b",
+//                 "Ahmedabad", "#e6194b",
+//                 "Amreli", "#3cb44b",
+//                 "Anand", "#ffe119",
+//                 "Aravalli", "#4363d8",
+//                 "Banaskantha", "#f58231",
+//                 "Bharuch", "#911eb4",
+//                 "Bhavnagar", "#46f0f0",
+//                 "Botad", "#f032e6",
+//                 "Chhota Udaipur", "#bcf60c",
+//                 "Dahod", "#fabebe",
+//                 "Dang", "#008080",
+//                 "Devbhoomi Dwarka", "#e6beff",
+//                 "Gandhinagar", "#9a6324",
+//                 "Gir Somnath", "#fffac8",
+//                 "Jamnagar", "#800000",
+//                 "Junagadh", "#aaffc3",
+//                 "Kheda", "#808000",
+//                 "Kutch", "#ffd8b1",
+//                 "Mahisagar", "#000075",
+//                 "Mehsana", "#808080",
+//                 "Morbi", "#e6194b",
+//                 "Narmada", "#3cb44b",
+//                 "Navsari", "#ffe119",
+//                 "Panchmahal", "#4363d8",
+//                 "Patan", "#f58231",
+//                 "Porbandar", "#911eb4",
+//                 "Rajkot", "#46f0f0",
+//                 "Sabarkantha", "#f032e6",
+//                 "Surat", "#bcf60c",
+//                 "Surendranagar", "#fabebe",
+//                 "Tapi", "#008080",
+//                 "Vadodara", "#e6beff",
+//                 "Valsad", "#9a6324",
+//                 "Baksa", "#e6194b",
+//                 "Barpeta", "#3cb44b",
+//                 "Biswanath", "#ffe119",
+//                 "Bongaigaon", "#4363d8",
+//                 "Cachar", "#f58231",
+//                 "Charaideo", "#911eb4",
+//                 "Chirang", "#46f0f0",
+//                 "Darrang", "#f032e6",
+//                 "Dhemaji", "#bcf60c",
+//                 "Dhubri", "#fabebe",
+//                 "Dibrugarh", "#008080",
+//                 "Dima Hasao", "#e6beff",
+//                 "Goalpara", "#9a6324",
+//                 "Golaghat", "#fffac8",
+//                 "Hailakandi", "#800000",
+//                 "Hojai", "#aaffc3",
+//                 "Jorhat", "#808000",
+//                 "Kamrup", "#ffd8b1",
+//                 "Kamrup Metropolitan", "#000075",
+//                 "Karbi Anglong", "#808080",
+//                 "Karimganj", "#e6194b",
+//                 "Kokrajhar", "#3cb44b",
+//                 "Lakhimpur", "#ffe119",
+//                 "Majuli", "#4363d8",
+//                 "Morigaon", "#f58231",
+//                 "Nagaon", "#911eb4",
+//                 "Nalbari", "#46f0f0",
+//                 "Sivasagar", "#f032e6",
+//                 "Sonitpur", "#bcf60c",
+//                 "South Salmara-Mankachar", "#fabebe",
+//                 "Tinsukia", "#008080",
+//                 "Udalguri", "#e6beff",
+//                 "West Karbi Anglong", "#9a6324",
+//                 "Bengaluru Urban", "#e6194b",
+//                 "Bengaluru Rural", "#3cb44b",
+//                 // Add more districts and colors as needed for Uttar Pradesh
+//                 // Default color
+//                 "#aaaaaa",
+//               ],
+//               "fill-opacity": 0.2,
+//             },
+//           });
+
+//           map.on("mouseenter", "districts-layer", (e) => {
+//             map.getCanvas().style.cursor = "pointer";
+//             const districtName = e.features[0].properties.NAME_2;
+//             popup.setLngLat(e.lngLat).setHTML(districtName).addTo(map);
+//           });
+
+//           map.on("mouseleave", "districts-layer", () => {
+//             map.getCanvas().style.cursor = "";
+//             popup.remove();
+//           });
+//         })
+//         .catch((error) => console.error("Error fetching GeoJSON:", error));
+//     });
+
+//     map.addControl(
+//       new MapboxGeocoder({
+//         accessToken: mapboxgl.accessToken,
+//         mapboxgl,
+//       })
+//     );
+
+//     return () => map.remove();
+//   }, []);
+
+//   return <div ref={mapContainerRef} style={{ height: "100vh", width: "100%" }} />;
+// };
+
+// export default MapComp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//generate the random color of each state and map it to single 
+// import React, { useEffect, useRef } from "react";
+// import mapboxgl from "mapbox-gl";
+// import "mapbox-gl/dist/mapbox-gl.css";
+// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+// import { FullscreenControl, GeolocateControl, NavigationControl, Popup } from "mapbox-gl";
+
+// const MapComp = () => {
+//   const mapContainerRef = useRef(null);
+//   const popup = new Popup();
+
+//   // Function to generate a random color
+//   const generateRandomColor = () => {
+//     const letters = '0123456789ABCDEF';
+//     let color = '#';
+//     for (let i = 0; i < 6; i++) {
+//       color += letters[Math.floor(Math.random() * 16)];
+//     }
+//     return color;
+//   };
+
+//   useEffect(() => {
+//     mapboxgl.accessToken = "pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA";
+
+//     const map = new mapboxgl.Map({
+//       container: mapContainerRef.current,
+//       style: "mapbox://styles/khandanish/clvam8pkn00rj01qp374q8pex",
+//       center: [78.9629, 23.5937],
+//       zoom: 4,
+//     });
+
+//     const fullscreenControl = new FullscreenControl();
+//     map.addControl(fullscreenControl, "top-left");
+
+//     const geolocateControl = new GeolocateControl({
+//       positionOptions: {
+//         enableHighAccuracy: true,
+//       },
+//       trackUserLocation: true,
+//     });
+//     map.addControl(geolocateControl);
+
+//     const navigationControl = new NavigationControl({
+//       showCompass: true,
+//       showZoom: true,
+//       visualizePitch: true,
+//     });
+//     map.addControl(navigationControl, "top-left");
+
+//     map.on("load", () => {
+//       map.addSource("places", {
+//         type: "geojson",
+//         data: {
+//           type: "FeatureCollection",
+//           features: [],
+//         },
+//       });
+
+//       map.setFog({});
+
+//       fetch("./india_state_geo.json")
+//         .then((response) => response.json())
+//         .then((data) => {
+//           console.log(data);
+//           map.addSource("states", {
+//             type: "geojson",
+//             data: data,
+//           });
+
+//           // Generate a unique color for each state
+//           const stateColors = {};
+//           data.features.forEach(feature => {
+//             const stateName = feature.properties.NAME_1;
+//             stateColors[stateName] = generateRandomColor();
+//           });
+
+//           map.addLayer({
+//             id: "states-layer",
+//             type: "fill",
+//             source: "states",
+//             layout: {},
+//             paint: {
+//               "fill-color": [
+//                 "match",
+//                 ["get", "NAME_1"],
+//                 ...Object.entries(stateColors).flat(),
+//                 "white" // default color if no match
+//               ],
+//               "fill-opacity": 1,
+//             },
+//           });
+
+//           map.on("mouseenter", "states-layer", (e) => {
+//             map.getCanvas().style.cursor = "pointer";
+//             const stateName = e.features[0].properties.NAME_1;
+//             popup.setLngLat(e.lngLat).setHTML(stateName).addTo(map);
+//           });
+
+//           map.on("mouseleave", "states-layer", () => {
+//             map.getCanvas().style.cursor = "";
+//             popup.remove();
+//           });
+//         })
+//         .catch((error) => console.error("Error fetching GeoJSON:", error));
+//     });
+
+//     map.addControl(
+//       new MapboxGeocoder({
+//         accessToken: mapboxgl.accessToken,
+//         mapboxgl: mapboxgl,
+//       })
+//     );
+
+//     return () => map.remove();
+//   }, []);
+
+//   return (
+//     <div ref={mapContainerRef} style={{ height: "100vh", width: "100%" }} />
+//   );
+// };
+
+// export default MapComp;
+
+
+
+
+
+
+
+// import React, { useEffect, useRef } from "react";
+// import mapboxgl from "mapbox-gl";
+// import "mapbox-gl/dist/mapbox-gl.css";
+// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+// import { FullscreenControl, GeolocateControl, NavigationControl } from "mapbox-gl";
 
 // const MapComp = () => {
 //   const mapContainerRef = useRef(null);
 
 //   useEffect(() => {
-//     mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA';
+//     mapboxgl.accessToken =
+//       "pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA";
+
 //     const map = new mapboxgl.Map({
 //       container: mapContainerRef.current,
-//       style: 'mapbox://styles/mapbox/light-v11',
-//       center: [-98, 38.88],
-//       minZoom: 2,
-//       zoom: 3
+//       style: "mapbox://styles/khandanish/clvam8pkn00rj01qp374q8pex",
+//       center: [78.9629, 23.5937],
+//       zoom: 4,
 //     });
 
-//     const zoomThreshold = 6;
+//     map.addControl(new FullscreenControl(), "top-left");
+//     map.addControl(new GeolocateControl({ positionOptions: { enableHighAccuracy: true }, trackUserLocation: true }));
+//     map.addControl(new NavigationControl({ showCompass: true, showZoom: true, visualizePitch: true }), "top-left");
+//     map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken, mapboxgl: mapboxgl }));
 
-    
-//     map.on('load', () => {
-//       map.addSource('population', {
-//         type: 'vector',
-//         url: 'mapbox://mapbox.660ui7x6'
-//       });
+//     const fetchData = async () => {
+//       try {
+//         const response = await fetch("./stateData.geojson");
+//         const data = await response.json();
 
-//       map.addLayer({
-//         id: 'state-population',
-//         source: 'population',
-//         'source-layer': 'state_county_population_2014_cen',
-//         maxzoom: zoomThreshold,
-//         type: 'fill',
-//         filter: ['==', 'isState', true],
-//         paint: {
-//           'fill-color': [
-//             'interpolate',
-//             ['linear'],
-//             ['get', 'population'],
-//             0, '#F2F12D',
-//             500000, '#EED322',
-//             750000, '#E6B71E',
-//             1000000, '#DA9C20',
-//             2500000, '#CA8323',
-//             5000000, '#B86B25',
-//             7500000, '#A25626',
-//             10000000, '#8B4225',
-//             25000000, '#723122'
-//           ],
-//           'fill-opacity': 0.75
-//         }
-//       }, 'road-label-simple');
+//         console.log("Fetched Data:", data); // Data ko console mein print karna
 
-//       map.addLayer({
-//         id: 'county-population',
-//         source: 'population',
-//         'source-layer': 'state_county_population_2014_cen',
-//         minzoom: zoomThreshold,
-//         type: 'fill',
-//         filter: ['==', 'isCounty', true],
-//         paint: {
-//           'fill-color': [
-//             'interpolate',
-//             ['linear'],
-//             ['get', 'population'],
-//             0, '#F2F12D',
-//             100, '#EED322',
-//             1000, '#E6B71E',
-//             5000, '#DA9C20',
-//             10000, '#CA8323',
-//             50000, '#B86B25',
-//             100000, '#A25626',
-//             500000, '#8B4225',
-//             1000000, '#723122'
-//           ],
-//           'fill-opacity': 0.75
-//         }
-//       }, 'road-label-simple');
+//         map.on("load", () => {
+//           map.addSource("states", {
+//             type: "geojson",
+//             data: data
+//           });
 
-//       map.on('zoom', () => {
-//         if (map.getZoom() > zoomThreshold) {
-//           stateLegendEl.style.display = 'none';
-//           countyLegendEl.style.display = 'block';
-//         } else {
-//           stateLegendEl.style.display = 'block';
-//           countyLegendEl.style.display = 'none';
-//         }
-//       });
-//     });
+//           map.addLayer({
+//             id: "states-layer",
+//             type: "fill",
+//             source: "states",
+//             paint: {
+//               "fill-color": [
+//                 "case",
+//                 ["==", ["get", "NAME_1"], "Andaman and Nicobar"], "yellow",
+//                 "red" // Default color for other states
+//               ],
+//               "fill-opacity": 0.7
+//             }
+//           });
+//         });
+//       } catch (error) {
+//         console.error("Error fetching data:", error);
+//       }
+//     };
+
+//     fetchData();
 
 //     return () => map.remove();
-//   }, []); // Only run on mount and unmount
+//   }, []);
 
-//   return (
-
-//     <>
-//     <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
-//       <div ref={mapContainerRef} style={{ position: 'absolute', top: 0, bottom: 0, width: '100%' }} />
-//       <div id="state-legend" className="legend">
-//         <h4>Population</h4>
-//         {/* <div><span style="background-color: #723122"></span>25,000,000</div>
-//     <div><span style="background-color: #8b4225"></span>10,000,000</div>
-//     <div><span style="background-color: #a25626"></span>7,500,000</div>
-//     <div><span style="background-color: #b86b25"></span>5,000,000</div>
-//     <div><span style="background-color: #ca8323"></span>2,500,000</div>
-//     <div><span style="background-color: #da9c20"></span>1,000,000</div>
-//     <div><span style="background-color: #e6b71e"></span>750,000</div>
-//     <div><span style="background-color: #eed322"></span>500,000</div>
-//     <div><span style="background-color: #f2f12d"></span>0</div> */}
-//       </div>
-//       <div id="county-legend" className="legend" style={{ display: 'none' }}>
-//         <h4>Population</h4>
-//         {/* <div><span style="background-color: #723122"></span>1,000,000</div>
-//     <div><span style="background-color: #8b4225"></span>500,000</div>
-//     <div><span style="background-color: #a25626"></span>100,000</div>
-//     <div><span style="background-color: #b86b25"></span>50,000</div>
-//     <div><span style="background-color: #ca8323"></span>10,000</div>
-//     <div><span style="background-color: #da9c20"></span>5,000</div>
-//     <div><span style="background-color: #e6b71e"></span>1,000</div>
-//     <div><span style="background-color: #eed322"></span>100</div>
-//     <div><span style="background-color: #f2f12d"></span>0</div> */}
-//       </div>
-//     </div>
-
-
-  
-
-//     </>
-    
-//   );
+//   return <div ref={mapContainerRef} style={{ height: "100vh", width: "100%" }} />;
 // };
 
 // export default MapComp;
@@ -392,440 +705,7 @@ export default MapComp;
 
 
 
-// // // import React, { useEffect, useRef } from 'react';
-// // // import mapboxgl from 'mapbox-gl';
 
-// // // const MapComp = () => {
-// // //   const mapContainerRef = useRef(null);
 
-// // //   useEffect(() => {
-// // //     mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA';
 
-// // //     const map = new mapboxgl.Map({
-// // //       container: mapContainerRef.current,
-// // //       style: 'mapbox://styles/examples/cjgioozof002u2sr5k7t14dim',
-// // //       center: [-98, 38], // set initial center of the map
-// // //       zoom: 3, // set initial zoom level
-// // //     });
 
-// // //     map.on('load', () => {
-// // //       // Add map layers, legends, and interaction here
-// // //     });
-
-// // //     // Clean up map instance on unmount
-// // //     return () => map.remove();
-// // //   }, []);
-
-// // //   return <div ref={mapContainerRef} className="map-container" />;
-// // // };
-
-// // // export default MapComp;
-
-
-
-
-
-
-
-// // // import React, { useEffect } from 'react';
-// // // import mapboxgl from 'mapbox-gl';
-
-// // // // Define Mapbox access token
-// // // mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA';
-
-// // // const MapComp = () => {
-// // //   useEffect(() => {
-// // //     const map = new mapboxgl.Map({
-// // //       container: 'map',
-// // //       style: 'mapbox://styles/khandanish/clv6cgpd200lk01qp6timcqsj',
-// // //       center: [78.9629, 23.5937], 
-// // //       zoom: 3, // Initial zoom level
-// // //     });
-
-// // //     map.on('load', () => {
-// // //       // Pointer cursor
-// // //       map.getCanvas().style.cursor = 'default';
-
-// // //       // Set map bounds to the continental US
-// // //       // map.fitBounds([[-133.2421875, 16.972741], [-47.63671875, 52.696361]]);
-// // //       map.fitBounds = [
-// // //         [68.1766451354, 7.96553477623],   // Southwest coordinates (longitude, latitude)
-// // //         [97.4025614766, 35.4940095078]    // Northeast coordinates (longitude, latitude)
-// // //     ];
-    
-
-// // //       // Layer names and colors
-// // //       const layers = ['0-10', '10-20', '20-50', '50-100', '100-200', '200-500', '500-1000', '1000+'];
-// // //       const colors = ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026'];
-
-// // //       // Create legend
-// // //       const legend = document.getElementById('legend');
-
-// // //       layers.forEach((layer, i) => {
-// // //         const color = colors[i];
-// // //         const item = document.createElement('div');
-// // //         const key = document.createElement('span');
-// // //         key.className = 'legend-key';
-// // //         key.style.backgroundColor = color;
-
-// // //         const value = document.createElement('span');
-// // //         value.innerHTML = `${layer}`;
-// // //         item.appendChild(key);
-// // //         item.appendChild(value);
-// // //         legend.appendChild(item);
-// // //       });
-
-// // //       // Change info window on hover
-// // //       map.on('mousemove', (event) => {
-// // //         const states = map.queryRenderedFeatures(event.point, { layers: ['statedata'] });
-// // //         document.getElementById('pd').innerHTML = states.length
-// // //           ? `<h3>${states[0].properties.name}</h3><p><strong><em>${states[0].properties.density}</strong> people per square mile</em></p>`
-// // //           : `<p>Hover over a state!</p>`;
-// // //       });
-// // //     });
-
-// // //     // Clean up
-// // //     return () => map.remove();
-// // //   }, []); // Empty dependency array ensures this effect runs only once on mount
-
-// // //   return (
-// // //     <div>
-// // //       <div id="map" style={{ position: 'absolute', top: 0, bottom: 0, width: '100%' }} />
-// // //       <div className="map-overlay" style={{ position: 'absolute', bottom: 0, right: 0, background: '#fff', marginRight: '20px', fontFamily: 'Arial, sans-serif', overflow: 'auto', borderRadius: '3px' }}>
-// // //         <h2>US population density</h2>
-// // //         <div id="pd"><p>Hover over a state!</p></div>
-// // //       </div>
-// // //       <div className="map-overlay" id="legend" style={{ padding: '10px', boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)', lineHeight: '18px', height: '150px', marginBottom: '40px', width: '100px' }} />
-// // //     </div>
-// // //   );
-// // // };
-
-// // // export default MapComp;
-
-
-
-
-
-
-// // // import React, { useEffect } from 'react';
-// // // import mapboxgl from 'mapbox-gl';
-
-// // // const MapComp = () => {
-// // //     useEffect(() => {
-// // //         mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA';
-
-// // //         const map = new mapboxgl.Map({
-// // //             container: 'map',
-// // //             style: 'mapbox://styles/mapbox/light-v11',
-// // //             center: [78.9629, 23.5937], // Centered on India
-// // //             zoom: 4
-// // //         });
-
-// // //         // Data: Indian State HDI (example data)
-// // //         const indiaStateData = [
-// // //             { 'state': 'Kerala', 'hdi': 0.78 },
-// // //             { 'state': 'Maharashtra', 'hdi': 0.83 },
-// // //             { 'state': 'Karnataka', 'hdi': 0.81 },
-// // //             { 'state': 'Tamil Nadu', 'hdi': 0.79 },
-// // //             // Add more states with their respective HDI values
-// // //         ];
-
-// // //         map.on('load', () => {
-// // //             // Add vector tile source for Indian state boundaries
-// // //             map.addSource('states', {
-// // //                 type: 'vector',
-// // //                 url: 'mapbox://mapbox.mapbox-streets-v8' // Example vector tile source URL
-// // //                 // Replace URL with the appropriate vector tile source for Indian states
-// // //             });
-
-// // //             // Define a fill layer to render the Indian state data
-// // //             map.addLayer(
-// // //                 {
-// // //                     id: 'state-fill',
-// // //                     type: 'fill',
-// // //                     source: 'states',
-// // //                     'source-layer': 'admin-1-boundaries', // Assuming the source layer contains state boundaries
-// // //                     paint: {
-// // //                         'fill-opacity': 0.8,
-// // //                         'fill-color': [
-// // //                             'case',
-// // //                             ['in', ['get', 'name'], ['literal', indiaStateData.map(state => state.state)]],
-// // //                             [
-// // //                                 'match',
-// // //                                 ['get', 'name'],
-// // //                                 ...indiaStateData.map(state => [state.state, `rgba(0, ${Math.round(state.hdi * 255)}, 0)`]),
-// // //                                 'rgba(0, 0, 0, 0)' // Default color where no data matches
-// // //                             ],
-// // //                             'rgba(0, 0, 0, 0)' // Default color for other states
-// // //                         ]
-// // //                     }
-// // //                 },
-// // //                 'waterway-label' // Place the layer below waterway labels
-// // //             );
-// // //         });
-
-// // //         return () => map.remove(); // Clean up on unmount
-// // //     }, []);
-
-// // //     return <div id="map" style={{ width: '100%', height: '100vh' }} />;
-// // // };
-
-// // // export default MapComp;
-
-
-
-
-
-
-
-
-
-
-// // // // import React, { useEffect } from 'react';
-// // // // import mapboxgl from 'mapbox-gl';
-
-// // // // // Define Mapbox access token
-// // // // mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA';
-
-// // // // const MapComp = () => {
-// // // //   useEffect(() => {
-// // // //     const map = new mapboxgl.Map({
-// // // //       container: 'map',
-// // // //       style: 'mapbox://styles/khandanish/clv6cgpd200lk01qp6timcqsj', // Use a suitable Mapbox style for India
-// // // //       center: [78.9629, 23.5937], // Centered on India
-// // // //       zoom: 4, // Adjust zoom level as needed
-// // // //     });
-
-// // // //     map.on('load', () => {
-// // // //       // Pointer cursor
-// // // //       map.getCanvas().style.cursor = 'default';
-
-// // // //       // Set map bounds to India
-// // // //       map.fitBounds([
-// // // //         [68.1766451354, 7.96553477623],   // Southwest coordinates (longitude, latitude)
-// // // //         [97.4025614766, 35.4940095078]    // Northeast coordinates (longitude, latitude)
-// // // //       ]);
-
-// // // //       // Layer names and colors (update according to your data)
-// // // //       const layers = ['Low', 'Medium', 'High']; // Example density categories
-// // // //       const colors = ['#FFEDA0', '#FEB24C', '#F03B20']; // Example colors for legend
-
-// // // //       // Create legend
-// // // //       const legend = document.getElementById('legend');
-
-// // // //       layers.forEach((layer, i) => {
-// // // //         const color = colors[i];
-// // // //         const item = document.createElement('div');
-// // // //         const key = document.createElement('span');
-// // // //         key.className = 'legend-key';
-// // // //         key.style.backgroundColor = color;
-
-// // // //         const value = document.createElement('span');
-// // // //         value.innerHTML = `${layer}`;
-// // // //         item.appendChild(key);
-// // // //         item.appendChild(value);
-// // // //         legend.appendChild(item);
-// // // //       });
-
-// // // //       // Change info window on hover (update according to your data)
-// // // //       map.on('mousemove', (event) => {
-// // // //         const states = map.queryRenderedFeatures(event.point, { layers: ['statedata'] });
-// // // //         document.getElementById('pd').innerHTML = states.length
-// // // //           ? `<h3>${states[0].properties.name}</h3><p><strong>Density:</strong> ${states[0].properties.density} people per square kilometer</p>` // Update density unit and property names
-// // // //           : `<p>Hover over a state!</p>`;
-// // // //       });
-// // // //     });
-
-// // // //     // Clean up
-// // // //     return () => map.remove();
-// // // //   }, []); // Empty dependency array ensures this effect runs only once on mount
-
-// // // //   return (
-// // // //     <div>
-// // // //       <div id="map" style={{ position: 'absolute', top: 0, bottom: 0, width: '100%' }} />
-// // // //       <div className="map-overlay" style={{ position: 'absolute', bottom: 0, right: 0, background: '#fff', marginRight: '20px', fontFamily: 'Arial, sans-serif', overflow: 'auto', borderRadius: '3px' }}>
-// // // //         <h2>India State Population Density</h2>
-// // // //         <div id="pd"><p>Hover over a state!</p></div>
-// // // //       </div>
-// // // //       <div className="map-overlay" id="legend" style={{ padding: '10px', boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)', lineHeight: '18px', height: '100px', marginBottom: '40px', width: '100px' }} />
-// // // //     </div>
-// // // //   );
-// // // // };
-
-// // // // export default MapComp;
-
-
-
-
-
-
-// import React, { useEffect, useRef } from 'react';
-//  import mapboxgl from 'mapbox-gl';
-
-//  const MapboxMap = () => {
-//    const mapContainerRef = useRef(null);
-
-//   useEffect(() => {
-//      mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA'; // Set your Mapbox access token here
-
-//      const map = new mapboxgl.Map({
-//        container: mapContainerRef.current,
-//       style: 'mapbox://styles/mapbox/light-v11',
-//        center: [-93.261, 44.971],
-//       zoom: 10.5
-//    });
-
-//     map.on('load', () => {
-//        map.addLayer({
-//          id: 'historical-places',
-//         type: 'circle',
-//          source: {
-//           type: 'vector',
-//           url: 'mapbox://examples.8ribcg3i'
-//         },
-//          'source-layer': 'HPC_landmarks-a88vge',
-//         paint: {
-//           'circle-radius': [
-//              ['linear'],
-//             ['zoom'],
-//            10,
-//             ['/', ['-', 2017, ['number', ['get', 'Constructi'], 2017]], 30],
-//             13,
-//             ['/', ['-', 2017, ['number', ['get', 'Constructi'], 2017]], 10]
-//            ],
-//         'circle-color': 'rgb(171, 72, 33)'
-//        }
-//       });
-//     });
-
-//      return () => map.remove();
-//    }, []);
-
-//    return <div ref={mapContainerRef} style={{ width: '100%', height: '100vh' }} />;
-//  };
-
-//  export default MapboxMap;
-//  import React, { useEffect, useRef } from 'react';
-//  import mapboxgl from 'mapbox-gl';
-
-// const MapComp = () => {
-//    const mapContainerRef = useRef(null);
-
-//   useEffect(() => {
-//     const map = new mapboxgl.Map({
-//        container: mapContainerRef.current,
-//       style: 'mapbox://styles/mapbox/light-v11',
-//       center: [-98, 38.88],
-//       minZoom: 2,
-//      zoom: 3
-//     });
-
-//     const zoomThreshold = 4;
-
-//     map.on('load', () => {
-//       map.addSource('population', {
-//         type: 'vector',
-//        url: 'mapbox://mapbox.660ui7x6'
-//      });
-
-//       map.addLayer({
-//         id: 'state-population',
-//         source: 'population',
-//         maxzoom: zoomThreshold,
-//          type: 'fill',
-//         filter: ['==', 'isState', true],
-//         paint: {
-//           'fill-color': [
-//             'interpolate',
-//             ['linear'],
-//             ['get', 'population'],
-//             0, '#F2F12D',
-//             500000, '#EED322',
-//             750000, '#E6B71E',
-//             1000000, '#DA9C20',
-//             2500000, '#CA8323',
-//             5000000, '#B86B25',
-//             7500000, '#A25626',
-//             10000000, '#8B4225',
-//             25000000, '#723122'
-//           ],
-//           'fill-opacity': 0.75
-//         }
-//       }, 'road-label-simple');
-
-//       map.addLayer({
-//         id: 'county-population',
-//         source: 'population',
-//         'source-layer': 'state_county_population_2014_cen',
-//         minzoom: zoomThreshold,
-//         type: 'fill',
-//         filter: ['==', 'isCounty', true],
-//         paint: {
-//           'fill-color': [
-//             'interpolate',
-//             ['linear'],
-//             ['get', 'population'],
-//             0, '#F2F12D',
-//             100, '#EED322',
-//             1000, '#E6B71E',
-//             5000, '#DA9C20',
-//             10000, '#CA8323',
-//             50000, '#B86B25',
-//             100000, '#A25626',
-//             500000, '#8B4225',
-//             1000000, '#723122'
-//           ],
-//           'fill-opacity': 0.7         }
-//        }, 'road-label-simple');
-
-//        // Add hover effect and popup
-//        map.on('mousemove', 'state-population', (e) => {
-//          const feature = e.features[0];
-//        });
-
-//       map.on('mousemove', 'county-population', (e) => {
-//         const feature = e.features[0];
-//         new mapboxgl.Popup()
-//           .setLngLat(e.lngLat)
-//           .setHTML(`<h3>${feature.properties.name}</h3><p>Population: ${feature.properties.population}</p>`)
-//           .addTo(map);
-//       });
-
-//       map.on('mouseleave', 'state-population', () => {
-//         map.getCanvas().style.cursor = '';
-//       });
-
-//       map.on('mouseleave', 'county-population', () => {
-//         map.getCanvas().style.cursor = '';
-//       });
-
-//       map.on('zoom', () => {
-//         if (map.getZoom() > zoomThreshold) {
-//           document.getElementById('state-legend').style.display = 'none';
-//           document.getElementById('county-legend').style.display = 'block';
-//         } else {
-//           document.getElementById('state-legend').style.display = 'block';
-//           document.getElementById('county-legend').style.display = 'none';
-//         }
-//       });
-//     });
-
-//     return () => map.remove();
-//   }, []); // Only run on mount and unmount
-
-//   return (
-//     <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
-//       <div ref={mapContainerRef} style={{ position: 'absolute', top: 0, bottom: 0, width: '100%' }} />
-//       <div id="state-legend" className="legend">
-//         <h4>Population (State)</h4>
-//         {/* State population legend here */}
-//       </div>
-//       <div id="county-legend" className="legend" style={{ display: 'none' }}>
-//         <h4>Population (County)</h4>
-//         {/* County population legend here */}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default MapComp;

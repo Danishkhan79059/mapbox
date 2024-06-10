@@ -1,1 +1,1186 @@
-    { "type": "Feature", "properties": { "ID_0": 105, "ISO": "IND", "NAME_0": "India", "ID_1": 2, "NAME_1": "Andhra Pradesh", "NL_NAME_1": null, "VARNAME_1": null, "TYPE_1": "State", "ENGTYPE_1": "State" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ 80.274581909179972, 13.459583282470703 ], [ 80.274581909179972, 13.459029197692814 ], [ 80.274856567382983, 13.459031105041618 ], [ 80.274856567382983, 13.458750724792424 ], [ 80.275138854980582, 13.458750724792424 ], [ 80.275138854980582, 13.458198547363509 ], [ 80.275405883789062, 13.458198547363509 ], [ 80.275405883789062, 13.457921028137264 ], [ 80.275695800781307, 13.457921028137264 ], [ 80.275695800781307, 13.457640647888297 ], [ 80.275970458984375, 13.457640647888297 ], [ 80.275970458984375, 13.4570827484132 ], [ 80.276252746582088, 13.4570827484132 ], [ 80.276252746582088, 13.456805229187125 ], [ 80.276527404785099, 13.45681095123291 ], [ 80.276527404785099, 13.456251144409407 ], [ 80.276809692382869, 13.456251144409407 ], [ 80.276802062988338, 13.455972671508846 ], [ 80.277084350586222, 13.455972671508846 ], [ 80.277084350586222, 13.455695152282942 ], [ 80.277641296387003, 13.455695152282942 ], [ 80.277641296387003, 13.455416679382552 ], [ 80.277915954590014, 13.455421447753849 ], [ 80.277915954590014, 13.455131530761776 ], [ 80.278472900390796, 13.45513820648199 ], [ 80.278472900390796, 13.4548597335816 ], [ 80.278747558593807, 13.4548597335816 ], [ 80.278747558593807, 13.45458030700695 ], [ 80.279304504394588, 13.454582214355696 ], [ 80.279304504394588, 13.454306602478027 ], [ 80.279586791992131, 13.454311370849666 ], [ 80.279586791992131, 13.4540309906007 ], [ 80.280418395996151, 13.4540309906007 ], [ 80.280418395996151, 13.453749656677246 ], [ 80.281250000000114, 13.453749656677246 ], [ 80.281250000000114, 13.453470230102596 ], [ 80.282081604003906, 13.453472137451172 ], [ 80.282081604003906, 13.453193664550781 ], [ 80.283195495605753, 13.453193664550781 ], [ 80.283195495605753, 13.452916145324707 ], [ 80.284027099609546, 13.452920913696346 ], [ 80.284027099609546, 13.452640533447379 ], [ 80.284858703613338, 13.452640533447379 ], [ 80.284858703613338, 13.452360153198242 ], [ 80.285140991211108, 13.452360153198242 ], [ 80.285140991211108, 13.451804161071777 ], [ 80.285423278808651, 13.451810836791992 ], [ 80.285423278808651, 13.451250076294059 ], [ 80.285697937011719, 13.451250076294059 ], [ 80.285697937011719, 13.450969696044922 ], [ 80.285972595214901, 13.450971603393668 ], [ 80.285972595214901, 13.450415611267204 ], [ 80.286247253418253, 13.450421333312988 ], [ 80.286247253418253, 13.449859619140739 ], [ 80.286529541015682, 13.449861526489485 ], [ 80.286529541015682, 13.449028015136776 ], [ 80.286247253418253, 13.449029922485352 ], [ 80.286247253418253, 13.448472023010311 ], [ 80.285697937011719, 13.448472023010311 ], [ 80.285697937011719, 13.448749542236385 ], [ 80.285423278808651, 13.448749542236385 ], [ 80.285423278808651, 13.449321746826229 ], [ 80.285140991211108, 13.44930553436302 ], [ 80.285140991211108, 13.449582099914664 ], [ 80.284858703613338, 13.449582099914664 ], [ 80.284858703613338, 13.449861526489485 ], [ 80.284576416015796, 13.449859619140739 ], [ 80.284576416015796, 13.450139999389876 ], [ 80.284301757812614, 13.450138092041129 ], [ 80.284301757812614, 13.450694084167594 ], [ 80.284027099609546, 13.450694084167594 ], [ 80.284027099609546, 13.450971603393668 ], [ 80.283752441406534, 13.450969696044922 ], [ 80.283752441406534, 13.451250076294059 ], [ 80.282913208007869, 13.451250076294059 ], [ 80.282913208007869, 13.451531410217342 ], [ 80.282081604003906, 13.451531410217342 ], [ 80.282081604003906, 13.451810836791992 ], [ 80.281524658203296, 13.451804161071777 ], [ 80.281524658203296, 13.452083587646428 ], [ 80.280693054199503, 13.452083587646428 ], [ 80.280693054199503, 13.452360153198242 ], [ 80.280136108398722, 13.452360153198242 ], [ 80.280136108398722, 13.452640533447379 ], [ 80.279869079589901, 13.452640533447379 ], [ 80.279869079589901, 13.452920913696346 ], [ 80.279304504394588, 13.452916145324707 ], [ 80.279304504394588, 13.453193664550781 ], [ 80.278747558593807, 13.453193664550781 ], [ 80.278747558593807, 13.453472137451172 ], [ 80.278198242187614, 13.453470230102596 ], [ 80.278190612793082, 13.453749656677246 ], [ 80.277915954590014, 13.453749656677246 ], [ 80.277915954590014, 13.4540309906007 ], [ 80.277359008789062, 13.4540309906007 ], [ 80.277359008789062, 13.454311370849666 ], [ 80.277084350586222, 13.454306602478027 ], [ 80.277084350586222, 13.454582214355696 ], [ 80.276527404785099, 13.45458030700695 ], [ 80.276527404785099, 13.4548597335816 ], [ 80.276252746582088, 13.4548597335816 ], [ 80.276252746582088, 13.45513820648199 ], [ 80.275695800781307, 13.455131530761776 ], [ 80.275695800781307, 13.455421447753849 ], [ 80.275413513183764, 13.455416679382552 ], [ 80.275413513183764, 13.455695152282942 ], [ 80.275138854980582, 13.455690383911133 ], [ 80.275138854980582, 13.456251144409407 ], [ 80.274856567382983, 13.456251144409407 ], [ 80.274856567382983, 13.45681095123291 ], [ 80.274581909179972, 13.456805229187125 ], [ 80.274581909179972, 13.45736122131359 ], [ 80.274307250976562, 13.45736122131359 ], [ 80.274307250976562, 13.457921028137264 ], [ 80.27402496337919, 13.457917213440055 ], [ 80.27402496337919, 13.458473205566349 ], [ 80.273742675781307, 13.458471298217773 ], [ 80.273742675781307, 13.459312438964844 ], [ 80.27402496337919, 13.459304809570312 ], [ 80.27402496337919, 13.459583282470703 ], [ 80.274581909179972, 13.459583282470703 ] ] ], [ [ [ 80.227355957031421, 13.494031906127987 ], [ 80.227355957031421, 13.493471145629883 ], [ 80.227638244628963, 13.493471145629883 ], [ 80.227638244628963, 13.492917060852164 ], [ 80.227912902832031, 13.492921829223633 ], [ 80.227912902832031, 13.4923610687257 ], [ 80.227638244628963, 13.4923610687257 ], [ 80.227638244628963, 13.491811752319279 ], [ 80.227355957031421, 13.491811752319279 ], [ 80.227355957031421, 13.491239547729435 ], [ 80.227081298828239, 13.49124908447277 ], [ 80.227081298828239, 13.490693092346305 ], [ 80.225135803222713, 13.490693092346305 ], [ 80.225135803222713, 13.490416526794661 ], [ 80.224861145019531, 13.490420341491699 ], [ 80.224861145019531, 13.490140914916992 ], [ 80.224029541015739, 13.490140914916992 ], [ 80.224029541015739, 13.491811752319279 ], [ 80.224586486816463, 13.491805076599235 ], [ 80.224586486816463, 13.492082595825309 ], [ 80.224861145019531, 13.492080688476562 ], [ 80.224861145019531, 13.4923610687257 ], [ 80.225418090820256, 13.4923610687257 ], [ 80.225418090820256, 13.492638587951603 ], [ 80.225982666015568, 13.492638587951603 ], [ 80.225982666015568, 13.492921829223633 ], [ 80.226249694824276, 13.492917060852164 ], [ 80.226249694824276, 13.493195533752555 ], [ 80.226806640625171, 13.493190765380916 ], [ 80.226806640625171, 13.494031906127987 ], [ 80.227355957031421, 13.494031906127987 ] ] ], [ [ [ 80.232360839843807, 13.494583129882812 ], [ 80.232360839843807, 13.494304656982422 ], [ 80.232917785644531, 13.494304656982422 ], [ 80.232917785644531, 13.494027137756348 ], [ 80.23319244384794, 13.494031906127987 ], [ 80.23319244384794, 13.49375152587902 ], [ 80.233749389648551, 13.49375152587902 ], [ 80.233749389648551, 13.493471145629883 ], [ 80.234306335449276, 13.493471145629883 ], [ 80.234306335449276, 13.492917060852164 ], [ 80.234573364257756, 13.492921829223633 ], [ 80.234573364257756, 13.4923610687257 ], [ 80.234863281250057, 13.4923610687257 ], [ 80.234863281250057, 13.492080688476562 ], [ 80.234580993652344, 13.492082595825309 ], [ 80.234580993652344, 13.491805076599235 ], [ 80.234306335449276, 13.491811752319279 ], [ 80.234306335449276, 13.491239547729435 ], [ 80.234024047851733, 13.49124908447277 ], [ 80.234024047851733, 13.490973472595272 ], [ 80.233749389648551, 13.490973472595272 ], [ 80.233749389648551, 13.490693092346305 ], [ 80.230415344238452, 13.490693092346305 ], [ 80.230415344238452, 13.49124908447277 ], [ 80.23014068603544, 13.491239547729435 ], [ 80.23014068603544, 13.491529464721907 ], [ 80.229858398437671, 13.491526603698844 ], [ 80.229858398437671, 13.492082595825309 ], [ 80.229576110840128, 13.492080688476562 ], [ 80.229576110840128, 13.492638587951603 ], [ 80.229309082031307, 13.492638587951603 ], [ 80.229309082031307, 13.492921829223633 ], [ 80.229583740234659, 13.492917060852164 ], [ 80.229583740234659, 13.493471145629883 ], [ 80.229858398437671, 13.493471145629883 ], [ 80.229858398437671, 13.49375152587902 ], [ 80.230422973632983, 13.49375152587902 ], [ 80.230422973632983, 13.494031906127987 ], [ 80.230697631836051, 13.494027137756348 ], [ 80.230697631836051, 13.494304656982422 ], [ 80.231246948242244, 13.494304656982422 ], [ 80.231246948242244, 13.494583129882812 ], [ 80.232360839843807, 13.494583129882812 ] ] ], [ [ [ 80.26541900634777, 13.519582748413143 ], [ 80.26541900634777, 13.519305229187239 ], [ 80.265686035156421, 13.519309997558707 ], [ 80.265686035156421, 13.51902961730957 ], [ 80.265975952148494, 13.51902961730957 ], [ 80.265975952148494, 13.518749237060604 ], [ 80.266532897949276, 13.518749237060604 ], [ 80.266525268554744, 13.518193244934139 ], [ 80.266807556152287, 13.518193244934139 ], [ 80.266807556152287, 13.51763916015625 ], [ 80.267082214355526, 13.517642021179313 ], [ 80.267082214355526, 13.517081260681152 ], [ 80.266807556152287, 13.517083168029785 ], [ 80.266807556152287, 13.51652717590332 ], [ 80.266532897949276, 13.516531944274959 ], [ 80.266532897949276, 13.515690803527832 ], [ 80.266250610351562, 13.515694618225211 ], [ 80.266250610351562, 13.514582633972282 ], [ 80.266525268554744, 13.514582633972282 ], [ 80.266525268554744, 13.513472557067928 ], [ 80.266807556152287, 13.513472557067928 ], [ 80.266807556152287, 13.512360572814941 ], [ 80.267082214355526, 13.512372016906852 ], [ 80.267082214355526, 13.511809349060172 ], [ 80.267356872558878, 13.511809349060172 ], [ 80.267356872558878, 13.510970115661621 ], [ 80.267639160156307, 13.510972976684513 ], [ 80
+let map  = L.map(map ={
+  center : [],
+  zoom : 5,
+  zoomControl: false,
+  layers:{baseLayer}
+})
+
+function getColor (d) {
+  return d > 4000000 ? "red":
+  d>3000000 ? "blue":
+  d>2000000 ? "green":
+  d>1000000 ? "purple" : "olive green"
+}
+
+function style(feature){
+  return {
+    weight : 1,
+    opacity:1,
+    color:"grey",
+    dashArray : "",
+    fillOpacity:0.9,
+    fillColor: getColor(feature.properties.cases)
+  };
+}
+
+let geojson  = L.geoJson(indst.{
+  style: style
+}).addTo(map);
+
+
+
+// import React, { useEffect, useRef } from 'react';
+// import mapboxgl from 'mapbox-gl';
+
+// const MapComp = () => {
+//   const mapContainerRef = useRef(null);
+
+//   useEffect(() => {
+//     mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA';
+//     const map = new mapboxgl.Map({
+//       container: mapContainerRef.current,
+//       style: 'mapbox://styles/mapbox/light-v11',
+//       center: [-98, 38.88],
+//       minZoom: 2,
+//       zoom: 3
+//     });
+
+//     const zoomThreshold = 6;
+
+//     map.on('load', () => {
+//       map.addSource('population', {
+//         type: 'vector',
+//         url: 'mapbox://mapbox.660ui7x6'
+//       });
+
+//       map.addLayer({
+//         id: 'state-population',
+//         source: 'population',
+//         'source-layer': 'state_county_population_2014_cen',
+//         maxzoom: zoomThreshold,
+//         type: 'fill',
+//         filter: ['==', 'isState', true],
+//         paint: {
+//           'fill-color': [
+//             'interpolate',
+//             ['linear'],
+//             ['get', 'population'],
+//             0, '#F2F12D',
+//             500000, '#EED322',
+//             750000, '#E6B71E',
+//             1000000, '#DA9C20',
+//             2500000, '#CA8323',
+//             5000000, '#B86B25',
+//             7500000, '#A25626',
+//             10000000, '#8B4225',
+//             25000000, '#723122'
+//           ],
+//           'fill-opacity': 0.75
+//         }
+//       }, 'road-label-simple');
+
+//       map.addLayer({
+//         id: 'county-population',
+//         source: 'population',
+//         'source-layer': 'state_county_population_2014_cen',
+//         minzoom: zoomThreshold,
+//         type: 'fill',
+//         filter: ['==', 'isCounty', true],
+//         paint: {
+//           'fill-color': [
+//             'interpolate',
+//             ['linear'],
+//             ['get', 'population'],
+//             0, '#F2F12D',
+//             100, '#EED322',
+//             1000, '#E6B71E',
+//             5000, '#DA9C20',
+//             10000, '#CA8323',
+//             50000, '#B86B25',
+//             100000, '#A25626',
+//             500000, '#8B4225',
+//             1000000, '#723122'
+//           ],
+//           'fill-opacity': 0.75
+//         }
+//       }, 'road-label-simple');
+
+//       map.on('zoom', () => {
+//         if (map.getZoom() > zoomThreshold) {
+//           stateLegendEl.style.display = 'none';
+//           countyLegendEl.style.display = 'block';
+//         } else {
+//           stateLegendEl.style.display = 'block';
+//           countyLegendEl.style.display = 'none';
+//         }
+//       });
+//     });
+
+//     return () => map.remove();
+//   }, []); // Only run on mount and unmount
+
+//   return (
+
+//     <>
+//     <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
+//       <div ref={mapContainerRef} style={{ position: 'absolute', top: 0, bottom: 0, width: '100%' }} />
+//       <div id="state-legend" className="legend">
+//         <h4>Population</h4>
+//         {/* <div><span style="background-color: #723122"></span>25,000,000</div>
+//     <div><span style="background-color: #8b4225"></span>10,000,000</div>
+//     <div><span style="background-color: #a25626"></span>7,500,000</div>
+//     <div><span style="background-color: #b86b25"></span>5,000,000</div>
+//     <div><span style="background-color: #ca8323"></span>2,500,000</div>
+//     <div><span style="background-color: #da9c20"></span>1,000,000</div>
+//     <div><span style="background-color: #e6b71e"></span>750,000</div>
+//     <div><span style="background-color: #eed322"></span>500,000</div>
+//     <div><span style="background-color: #f2f12d"></span>0</div> */}
+//       </div>
+//       <div id="county-legend" className="legend" style={{ display: 'none' }}>
+//         <h4>Population</h4>
+//         {/* <div><span style="background-color: #723122"></span>1,000,000</div>
+//     <div><span style="background-color: #8b4225"></span>500,000</div>
+//     <div><span style="background-color: #a25626"></span>100,000</div>
+//     <div><span style="background-color: #b86b25"></span>50,000</div>
+//     <div><span style="background-color: #ca8323"></span>10,000</div>
+//     <div><span style="background-color: #da9c20"></span>5,000</div>
+//     <div><span style="background-color: #e6b71e"></span>1,000</div>
+//     <div><span style="background-color: #eed322"></span>100</div>
+//     <div><span style="background-color: #f2f12d"></span>0</div> */}
+//       </div>
+//     </div>
+
+//     </>
+
+//   );
+// };
+
+// export default MapComp;
+
+// // // import React, { useEffect, useRef } from 'react';
+// // // import mapboxgl from 'mapbox-gl';
+
+// // // const MapComp = () => {
+// // //   const mapContainerRef = useRef(null);
+
+// // //   useEffect(() => {
+// // //     mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA';
+
+// // //     const map = new mapboxgl.Map({
+// // //       container: mapContainerRef.current,
+// // //       style: 'mapbox://styles/examples/cjgioozof002u2sr5k7t14dim',
+// // //       center: [-98, 38], // set initial center of the map
+// // //       zoom: 3, // set initial zoom level
+// // //     });
+
+// // //     map.on('load', () => {
+// // //       // Add map layers, legends, and interaction here
+// // //     });
+
+// // //     // Clean up map instance on unmount
+// // //     return () => map.remove();
+// // //   }, []);
+
+// // //   return <div ref={mapContainerRef} className="map-container" />;
+// // // };
+
+// // // export default MapComp;
+
+// // // import React, { useEffect } from 'react';
+// // // import mapboxgl from 'mapbox-gl';
+
+// // // // Define Mapbox access token
+// // // mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA';
+
+// // // const MapComp = () => {
+// // //   useEffect(() => {
+// // //     const map = new mapboxgl.Map({
+// // //       container: 'map',
+// // //       style: 'mapbox://styles/khandanish/clv6cgpd200lk01qp6timcqsj',
+// // //       center: [78.9629, 23.5937],
+// // //       zoom: 3, // Initial zoom level
+// // //     });
+
+// // //     map.on('load', () => {
+// // //       // Pointer cursor
+// // //       map.getCanvas().style.cursor = 'default';
+
+// // //       // Set map bounds to the continental US
+// // //       // map.fitBounds([[-133.2421875, 16.972741], [-47.63671875, 52.696361]]);
+// // //       map.fitBounds = [
+// // //         [68.1766451354, 7.96553477623],   // Southwest coordinates (longitude, latitude)
+// // //         [97.4025614766, 35.4940095078]    // Northeast coordinates (longitude, latitude)
+// // //     ];
+
+// // //       // Layer names and colors
+// // //       const layers = ['0-10', '10-20', '20-50', '50-100', '100-200', '200-500', '500-1000', '1000+'];
+// // //       const colors = ['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A', '#E31A1C', '#BD0026', '#800026'];
+
+// // //       // Create legend
+// // //       const legend = document.getElementById('legend');
+
+// // //       layers.forEach((layer, i) => {
+// // //         const color = colors[i];
+// // //         const item = document.createElement('div');
+// // //         const key = document.createElement('span');
+// // //         key.className = 'legend-key';
+// // //         key.style.backgroundColor = color;
+
+// // //         const value = document.createElement('span');
+// // //         value.innerHTML = `${layer}`;
+// // //         item.appendChild(key);
+// // //         item.appendChild(value);
+// // //         legend.appendChild(item);
+// // //       });
+
+// // //       // Change info window on hover
+// // //       map.on('mousemove', (event) => {
+// // //         const states = map.queryRenderedFeatures(event.point, { layers: ['statedata'] });
+// // //         document.getElementById('pd').innerHTML = states.length
+// // //           ? `<h3>${states[0].properties.name}</h3><p><strong><em>${states[0].properties.density}</strong> people per square mile</em></p>`
+// // //           : `<p>Hover over a state!</p>`;
+// // //       });
+// // //     });
+
+// // //     // Clean up
+// // //     return () => map.remove();
+// // //   }, []); // Empty dependency array ensures this effect runs only once on mount
+
+// // //   return (
+// // //     <div>
+// // //       <div id="map" style={{ position: 'absolute', top: 0, bottom: 0, width: '100%' }} />
+// // //       <div className="map-overlay" style={{ position: 'absolute', bottom: 0, right: 0, background: '#fff', marginRight: '20px', fontFamily: 'Arial, sans-serif', overflow: 'auto', borderRadius: '3px' }}>
+// // //         <h2>US population density</h2>
+// // //         <div id="pd"><p>Hover over a state!</p></div>
+// // //       </div>
+// // //       <div className="map-overlay" id="legend" style={{ padding: '10px', boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)', lineHeight: '18px', height: '150px', marginBottom: '40px', width: '100px' }} />
+// // //     </div>
+// // //   );
+// // // };
+
+// // // export default MapComp;
+
+// // // import React, { useEffect } from 'react';
+// // // import mapboxgl from 'mapbox-gl';
+
+// // // const MapComp = () => {
+// // //     useEffect(() => {
+// // //         mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA';
+
+// // //         const map = new mapboxgl.Map({
+// // //             container: 'map',
+// // //             style: 'mapbox://styles/mapbox/light-v11',
+// // //             center: [78.9629, 23.5937], // Centered on India
+// // //             zoom: 4
+// // //         });
+
+// // //         // Data: Indian State HDI (example data)
+// // //         const indiaStateData = [
+// // //             { 'state': 'Kerala', 'hdi': 0.78 },
+// // //             { 'state': 'Maharashtra', 'hdi': 0.83 },
+// // //             { 'state': 'Karnataka', 'hdi': 0.81 },
+// // //             { 'state': 'Tamil Nadu', 'hdi': 0.79 },
+// // //             // Add more states with their respective HDI values
+// // //         ];
+
+// // //         map.on('load', () => {
+// // //             // Add vector tile source for Indian state boundaries
+// // //             map.addSource('states', {
+// // //                 type: 'vector',
+// // //                 url: 'mapbox://mapbox.mapbox-streets-v8' // Example vector tile source URL
+// // //                 // Replace URL with the appropriate vector tile source for Indian states
+// // //             });
+
+// // //             // Define a fill layer to render the Indian state data
+// // //             map.addLayer(
+// // //                 {
+// // //                     id: 'state-fill',
+// // //                     type: 'fill',
+// // //                     source: 'states',
+// // //                     'source-layer': 'admin-1-boundaries', // Assuming the source layer contains state boundaries
+// // //                     paint: {
+// // //                         'fill-opacity': 0.8,
+// // //                         'fill-color': [
+// // //                             'case',
+// // //                             ['in', ['get', 'name'], ['literal', indiaStateData.map(state => state.state)]],
+// // //                             [
+// // //                                 'match',
+// // //                                 ['get', 'name'],
+// // //                                 ...indiaStateData.map(state => [state.state, `rgba(0, ${Math.round(state.hdi * 255)}, 0)`]),
+// // //                                 'rgba(0, 0, 0, 0)' // Default color where no data matches
+// // //                             ],
+// // //                             'rgba(0, 0, 0, 0)' // Default color for other states
+// // //                         ]
+// // //                     }
+// // //                 },
+// // //                 'waterway-label' // Place the layer below waterway labels
+// // //             );
+// // //         });
+
+// // //         return () => map.remove(); // Clean up on unmount
+// // //     }, []);
+
+// // //     return <div id="map" style={{ width: '100%', height: '100vh' }} />;
+// // // };
+
+// // // export default MapComp;
+
+// // // // import React, { useEffect } from 'react';
+// // // // import mapboxgl from 'mapbox-gl';
+
+// // // // // Define Mapbox access token
+// // // // mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA';
+
+// // // // const MapComp = () => {
+// // // //   useEffect(() => {
+// // // //     const map = new mapboxgl.Map({
+// // // //       container: 'map',
+// // // //       style: 'mapbox://styles/khandanish/clv6cgpd200lk01qp6timcqsj', // Use a suitable Mapbox style for India
+// // // //       center: [78.9629, 23.5937], // Centered on India
+// // // //       zoom: 4, // Adjust zoom level as needed
+// // // //     });
+
+// // // //     map.on('load', () => {
+// // // //       // Pointer cursor
+// // // //       map.getCanvas().style.cursor = 'default';
+
+// // // //       // Set map bounds to India
+// // // //       map.fitBounds([
+// // // //         [68.1766451354, 7.96553477623],   // Southwest coordinates (longitude, latitude)
+// // // //         [97.4025614766, 35.4940095078]    // Northeast coordinates (longitude, latitude)
+// // // //       ]);
+
+// // // //       // Layer names and colors (update according to your data)
+// // // //       const layers = ['Low', 'Medium', 'High']; // Example density categories
+// // // //       const colors = ['#FFEDA0', '#FEB24C', '#F03B20']; // Example colors for legend
+
+// // // //       // Create legend
+// // // //       const legend = document.getElementById('legend');
+
+// // // //       layers.forEach((layer, i) => {
+// // // //         const color = colors[i];
+// // // //         const item = document.createElement('div');
+// // // //         const key = document.createElement('span');
+// // // //         key.className = 'legend-key';
+// // // //         key.style.backgroundColor = color;
+
+// // // //         const value = document.createElement('span');
+// // // //         value.innerHTML = `${layer}`;
+// // // //         item.appendChild(key);
+// // // //         item.appendChild(value);
+// // // //         legend.appendChild(item);
+// // // //       });
+
+// // // //       // Change info window on hover (update according to your data)
+// // // //       map.on('mousemove', (event) => {
+// // // //         const states = map.queryRenderedFeatures(event.point, { layers: ['statedata'] });
+// // // //         document.getElementById('pd').innerHTML = states.length
+// // // //           ? `<h3>${states[0].properties.name}</h3><p><strong>Density:</strong> ${states[0].properties.density} people per square kilometer</p>` // Update density unit and property names
+// // // //           : `<p>Hover over a state!</p>`;
+// // // //       });
+// // // //     });
+
+// // // //     // Clean up
+// // // //     return () => map.remove();
+// // // //   }, []); // Empty dependency array ensures this effect runs only once on mount
+
+// // // //   return (
+// // // //     <div>
+// // // //       <div id="map" style={{ position: 'absolute', top: 0, bottom: 0, width: '100%' }} />
+// // // //       <div className="map-overlay" style={{ position: 'absolute', bottom: 0, right: 0, background: '#fff', marginRight: '20px', fontFamily: 'Arial, sans-serif', overflow: 'auto', borderRadius: '3px' }}>
+// // // //         <h2>India State Population Density</h2>
+// // // //         <div id="pd"><p>Hover over a state!</p></div>
+// // // //       </div>
+// // // //       <div className="map-overlay" id="legend" style={{ padding: '10px', boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)', lineHeight: '18px', height: '100px', marginBottom: '40px', width: '100px' }} />
+// // // //     </div>
+// // // //   );
+// // // // };
+
+// // // // export default MapComp;
+
+// import React, { useEffect, useRef } from 'react';
+//  import mapboxgl from 'mapbox-gl';
+
+//  const MapboxMap = () => {
+//    const mapContainerRef = useRef(null);
+
+//   useEffect(() => {
+//      mapboxgl.accessToken = 'pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA'; // Set your Mapbox access token here
+
+//      const map = new mapboxgl.Map({
+//        container: mapContainerRef.current,
+//       style: 'mapbox://styles/mapbox/light-v11',
+//        center: [-93.261, 44.971],
+//       zoom: 10.5
+//    });
+
+//     map.on('load', () => {
+//        map.addLayer({
+//          id: 'historical-places',
+//         type: 'circle',
+//          source: {
+//           type: 'vector',
+//           url: 'mapbox://examples.8ribcg3i'
+//         },
+//          'source-layer': 'HPC_landmarks-a88vge',
+//         paint: {
+//           'circle-radius': [
+//              ['linear'],
+//             ['zoom'],
+//            10,
+//             ['/', ['-', 2017, ['number', ['get', 'Constructi'], 2017]], 30],
+//             13,
+//             ['/', ['-', 2017, ['number', ['get', 'Constructi'], 2017]], 10]
+//            ],
+//         'circle-color': 'rgb(171, 72, 33)'
+//        }
+//       });
+//     });
+
+//      return () => map.remove();
+//    }, []);
+
+//    return <div ref={mapContainerRef} style={{ width: '100%', height: '100vh' }} />;
+//  };
+
+//  export default MapboxMap;
+//  import React, { useEffect, useRef } from 'react';
+//  import mapboxgl from 'mapbox-gl';
+
+// const MapComp = () => {
+//    const mapContainerRef = useRef(null);
+
+//   useEffect(() => {
+//     const map = new mapboxgl.Map({
+//        container: mapContainerRef.current,
+//       style: 'mapbox://styles/mapbox/light-v11',
+//       center: [-98, 38.88],
+//       minZoom: 2,
+//      zoom: 3
+//     });
+
+//     const zoomThreshold = 4;
+
+//     map.on('load', () => {
+//       map.addSource('population', {
+//         type: 'vector',
+//        url: 'mapbox://mapbox.660ui7x6'
+//      });
+
+//       map.addLayer({
+//         id: 'state-population',
+//         source: 'population',
+//         maxzoom: zoomThreshold,
+//          type: 'fill',
+//         filter: ['==', 'isState', true],
+//         paint: {
+//           'fill-color': [
+//             'interpolate',
+//             ['linear'],
+//             ['get', 'population'],
+//             0, '#F2F12D',
+//             500000, '#EED322',
+//             750000, '#E6B71E',
+//             1000000, '#DA9C20',
+//             2500000, '#CA8323',
+//             5000000, '#B86B25',
+//             7500000, '#A25626',
+//             10000000, '#8B4225',
+//             25000000, '#723122'
+//           ],
+//           'fill-opacity': 0.75
+//         }
+//       }, 'road-label-simple');
+
+//       map.addLayer({
+//         id: 'county-population',
+//         source: 'population',
+//         'source-layer': 'state_county_population_2014_cen',
+//         minzoom: zoomThreshold,
+//         type: 'fill',
+//         filter: ['==', 'isCounty', true],
+//         paint: {
+//           'fill-color': [
+//             'interpolate',
+//             ['linear'],
+//             ['get', 'population'],
+//             0, '#F2F12D',
+//             100, '#EED322',
+//             1000, '#E6B71E',
+//             5000, '#DA9C20',
+//             10000, '#CA8323',
+//             50000, '#B86B25',
+//             100000, '#A25626',
+//             500000, '#8B4225',
+//             1000000, '#723122'
+//           ],
+//           'fill-opacity': 0.7         }
+//        }, 'road-label-simple');
+
+//        // Add hover effect and popup
+//        map.on('mousemove', 'state-population', (e) => {
+//          const feature = e.features[0];
+//        });
+
+//       map.on('mousemove', 'county-population', (e) => {
+//         const feature = e.features[0];
+//         new mapboxgl.Popup()
+//           .setLngLat(e.lngLat)
+//           .setHTML(`<h3>${feature.properties.name}</h3><p>Population: ${feature.properties.population}</p>`)
+//           .addTo(map);
+//       });
+
+//       map.on('mouseleave', 'state-population', () => {
+//         map.getCanvas().style.cursor = '';
+//       });
+
+//       map.on('mouseleave', 'county-population', () => {
+//         map.getCanvas().style.cursor = '';
+//       });
+
+//       map.on('zoom', () => {
+//         if (map.getZoom() > zoomThreshold) {
+//           document.getElementById('state-legend').style.display = 'none';
+//           document.getElementById('county-legend').style.display = 'block';
+//         } else {
+//           document.getElementById('state-legend').style.display = 'block';
+//           document.getElementById('county-legend').style.display = 'none';
+//         }
+//       });
+//     });
+
+//     return () => map.remove();
+//   }, []); // Only run on mount and unmount
+
+//   return (
+//     <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
+//       <div ref={mapContainerRef} style={{ position: 'absolute', top: 0, bottom: 0, width: '100%' }} />
+//       <div id="state-legend" className="legend">
+//         <h4>Population (State)</h4>
+//         {/* State population legend here */}
+//       </div>
+//       <div id="county-legend" className="legend" style={{ display: 'none' }}>
+//         <h4>Population (County)</h4>
+//         {/* County population legend here */}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default MapComp;
+
+
+
+
+
+
+// features: [
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         " <p><strong>viztaLab company softwere company </strong>.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [-77.038659, 38.931567],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>softwere company .</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [-77.003168, 38.894651],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>softwere company .</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [-77.052477, 38.943951],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>softwere company .</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [92.8196, 12.2261],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>softwere company .</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [94.7278, 27.1004],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>softwere company .</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [92.9376, 26.2006],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>softwere company .</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [85.3131, 25.0961],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>softwere company .</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [76.7794, 30.7333],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>softwere company .</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [81.8661, 21.2787],
+//     },
+//   },
+
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>softwere company .</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [81.8661, 21.2787],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>softwere company .</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [77.1025, 28.7041],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>softwere company .</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [76.5762, 33.7782],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>softwere company .</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [85.2799, 23.6102],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>softwere company .</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [75.7139, 15.3173],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in Rajasthan.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [74.2179, 27.0238], // Rajasthan (Jaipur coordinates used)
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in Noida Sector 16.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [77.3151, 28.5733], // Noida Sector 16
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in Gurgaon.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [77.0266, 28.4595], // Gurgaon
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in Faridabad.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [77.3163, 28.4089], // Faridabad
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in Greater Noida.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [77.536, 28.4744], // Greater Noida
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in New Delhi.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [77.2295, 28.6139], // New Delhi
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in New Delhi.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [75.8577, 22.7196], // New Delhi
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in New Delhi.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [75.8648, 25.2138], // New Delhi
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in New Delhi.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [79.9865, 23.1815], // New Delhi
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in New Delhi.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [79.9222, 24.8318], // New Delhi
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in New Delhi.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [80.3319, 26.4499], // New Delhi
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in New Delhi.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [78.0028, 27.1767], // New Delhi
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in New Delhi.</p>",
+
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [82.9755, 25.3176], // New Delhi
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in New Delhi.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [82.9755, 25.3176], // New Delhi
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in New Delhi.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [81.1034, 17.0458],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in New Delhi.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [83.1907, 17.0458],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in New Delhi.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [83.1907, 17.0458],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in New Delhi.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [83.1907, 15.6917],
+//     },
+//   },
+//   {
+//     type: "Feature",
+//     properties: {
+//       description:
+//         "<strong>viztaLab company</strong><p>Software company in New Delhi.</p>",
+//       placeToVisit: "New Delhi",
+//       whomToVisit: "ViztaLab office",
+//       checkInDate: "2024-04-15",
+//       checkOutDate: "2024-04-20",
+//       reasonToVisit: "Business meetings and project discussions",
+//     },
+//     geometry: {
+//       type: "Point",
+//       coordinates: [81.1034, 15.6917],
+//     },
+//   },
+//   // Add more features here...
+// ],
+
+
+ // mapboxgl.accessToken ="pk.eyJ1Ijoia2hhbmRhbmlzaCIsImEiOiJjbHVqYmJ0cmkwZGVxMnBwaHlrbWF6cG8xIn0.YNX48zrv4Gim-H2GmoZqPA"
+   // style: 'mapbox://styles/mapbox/satellite-streets-v12',
+
+  //  map.addLayer({
+  //   id: "places",
+  //   type: "circle",
+  //   source: "places",
+  //   paint: {
+  //     "circle-color": " blue",
+  //     "circle-radius": 4,
+  //     "circle-stroke-width": 4,
+  //     "circle-stroke-color": "blue",
+  //     "fill-color": [
+  //       "match",
+  //       ["get", "STATE_NAME"],
+  //       "Andhra Pradesh",
+  //       "red",
+  //       "Karnataka",
+  //       "blue",
+  //       "Maharashtra",
+  //       "green",
+  //       "default-color",
+  //     ],
+  //   },
+  // });
+
+       // map.addLayer({
+
+
+
+       
+      // map.addLayer({
+      //   id: "states-layer",
+      //   type: "fill",
+      //   source: "states",
+      //   paint: {
+      //     "fill-color": [
+      //       "match",
+      //       ["get", "name"],
+      //       "Delhi", "#0000FF",         // Blue
+      //       "Uttar Pradesh", "#FF0000", // Red
+      //       "Maharashtra", "#00FF00",   // Green
+      //       // Add other states here
+      //       "#CCCCCC" // Default color for states not explicitly listed
+      //     ],
+      //     "fill-opacity": 0.7,
+      //   },
+      // });
+
+
+      // map.addSource("places", {
+      //   type: "geojson",
+      //   data: { type: "FeatureCollection", features: [] },
+      // });
+
+      // map.setFog({});
+
+      // map.addSource("states", {
+      //   type: "geojson",
+      //   data: "public/indianStates2.geojson",
+      // });
+
+      // map.on("load", () => {
+      //   map.on("mouseenter", "places", (e) => {
+      //     map.getCanvas().style.cursor = "pointer";
+      //     const coordinates = e.features[0].geometry.coordinates.slice();
+      //     const description = e.features[0].properties.description;
+      //     popup.setLngLat(coordinates).setHTML(description).addTo(map);
+      //   });
+  
+      //   map.on("mouseleave", "places", () => {
+      //     map.getCanvas().style.cursor = "";
+      //     popup.remove();
+      //   });
+      // });
