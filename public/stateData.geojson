@@ -1,27 +1,50 @@
 ﻿{
   "type": "FeatureCollection",
-  "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+  "crs": {
+    "type": "name",
+    "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+  },
 
-"features": [
-
-  { "type": "Feature", "properties": { "ID_0": 105, "ISO": "IND", "NAME_0": "India", "ID_1": 1, "NAME_1": "Andaman and Nicobar"}},
-  { "type": "Feature", "properties": { "ID_0": 105, "ISO": "IND", "NAME_0": "India", "ID_1": 2, "NAME_1": "Andhra Pradesh"}},
-  { "type": "Feature", "properties": { "ID_0": 105, "ISO": "IND", "NAME_0": "India", "ID_1": 3, "NAME_1": "Arunachal Pradesh"}},
-  { "type": "Feature", "properties": { "ID_0": 105, "ISO": "IND", "NAME_0": "India", "ID_1": 4, "NAME_1": "Assam"}}
-
-
-
-]
-
-
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "ID_0": 105,
+        "ISO": "IND",
+        "NAME_0": "India",
+        "ID_1": 1,
+        "NAME_1": "Andaman and Nicobar"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID_0": 105,
+        "ISO": "IND",
+        "NAME_0": "India",
+        "ID_1": 2,
+        "NAME_1": "Andhra Pradesh"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID_0": 105,
+        "ISO": "IND",
+        "NAME_0": "India",
+        "ID_1": 3,
+        "NAME_1": "Arunachal Pradesh"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "ID_0": 105,
+        "ISO": "IND",
+        "NAME_0": "India",
+        "ID_1": 4,
+        "NAME_1": "Assam"
+      }
+    }
+  ]
 }
-
-
-
-
-
-
-
-
-
-
