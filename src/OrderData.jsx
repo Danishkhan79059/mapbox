@@ -1,13 +1,7 @@
 import React, { useState } from "react";
-import {
-  FaFilter,
-  FaCaretUp,
-  FaCaretDown,
-  FaSearch,
-  FaCaretRight,
-} from "react-icons/fa";
+import { FaFilter, FaCaretUp, FaCaretDown, FaSearch, FaCaretRight } from "react-icons/fa";
 
-export default function SingleValueList() {
+export default function OrderData() {
   const customerIds = [
     { id: "All" },
     { id: "AA-1098" },
@@ -18,10 +12,18 @@ export default function SingleValueList() {
     { id: "DA-2623" },
   ];
 
+  const yearOptions = [
+    { year: "2021" },
+    { year: "2022" },
+    { year: "2023" },
+  ];
+
   const [searchTerm, setSearchTerm] = useState("");
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedValue, setSelectedValue] = useState("");
-  const [inputText, setInputText] = useState(""); // New state for text input
+  const [inputText, setInputText] = useState("");
+  const [showYearDropdown, setShowYearDropdown] = useState(false);
+  const [selectedYears, setSelectedYears] = useState([]);
 
   const filteredIds = customerIds.filter((id) =>
     id.id.toLowerCase().includes(searchTerm.toLowerCase())
@@ -58,6 +60,18 @@ export default function SingleValueList() {
     setSearchTerm(e.target.value);
   };
 
+  const toggleYearDropdown = () => {
+    setShowYearDropdown(!showYearDropdown);
+  };
+
+  const handleCheckboxChange = (year) => {
+    setSelectedYears((prevSelectedYears) =>
+      prevSelectedYears.includes(year)
+        ? prevSelectedYears.filter((y) => y !== year)
+        : [...prevSelectedYears, year]
+    );
+  };
+
   return (
     <div
       className="search-container"
@@ -68,7 +82,7 @@ export default function SingleValueList() {
         backgroundColor: "#f0f0f0",
       }}
     >
-      <h1>Single Value (DropDown)</h1>
+      <h1>Year and Date</h1>
 
       <div
         className="search-box"
@@ -101,7 +115,7 @@ export default function SingleValueList() {
               marginRight: "93px",
             }}
           >
-            Customer ID
+            Order Date
           </label>
           <FaFilter style={{ fontSize: "18px", color: "#333" }} />
           <FaCaretRight style={{ fontSize: "18px", color: "#333" }} />
@@ -166,7 +180,7 @@ export default function SingleValueList() {
               borderRadius: "5px",
               zIndex: "1200",
               boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-              maxHeight: "200px",
+              maxHeight: "300px", // Increased maxHeight to accommodate both dropdowns
               overflowY: "auto",
               overflowX: "hidden",
               width: "100%",
@@ -197,6 +211,7 @@ export default function SingleValueList() {
                 onChange={handleTextInputChange}
               />
             </div>
+
             {filteredIds.map((id, index) => (
               <div
                 key={index}
@@ -211,6 +226,46 @@ export default function SingleValueList() {
                 {id.id}
               </div>
             ))}
+
+            <div
+              className="dropdown-header"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                padding: "10px",
+                borderBottom: "1px solid #ccc",
+                backgroundColor: "#f9f9f9",
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+              onClick={toggleYearDropdown}
+            >
+              Year of Date
+              <FaFilter style={{ fontSize: "18px", color: "#333", marginLeft: "auto" }} />
+              {showYearDropdown ? (
+                <FaCaretUp style={{ fontSize: "18px", color: "#333", marginLeft: "5px" }} />
+              ) : (
+                <FaCaretRight style={{ fontSize: "18px", color: "#333", marginLeft: "5px" }} />
+              )}
+            </div>
+
+            {showYearDropdown && (
+              <div style={{ padding: "10px" }}>
+                {yearOptions.map((option, index) => (
+                  <div key={index} style={{ display: "flex", alignItems: "center", marginBottom: "5px" }}>
+                    <input
+                      type="checkbox"
+                      id={`checkbox-${option.year}`}
+                      value={option.year}
+                      checked={selectedYears.includes(option.year)}
+                      onChange={() => handleCheckboxChange(option.year)}
+                      style={{ marginRight: "10px" }}
+                    />
+                    <label htmlFor={`checkbox-${option.year}`}>{option.year}</label>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>

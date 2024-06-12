@@ -7,6 +7,8 @@ import SingleValueList from "./SingleValueList";
 import SingleValueDropDown from "./SingleValueDropDown";
 import MultiValueDropDown from "./MultiValueDropDown";
 import DropdownButton from "./DroptdownButton";
+import Range from "./Range";
+import OrderData from './OrderData'
 // import MapComponent from "./MapComponent";
 
 // 
@@ -15,14 +17,20 @@ const App = () => {
 
   return (
     <div className="App">
-      <MapComp  />
+     
+     
       {/* <MapComponent/> */}
    {/* <MapDist/> */}
    <SinglevalueSlider/>
    <SingleValueList/>
+   <OrderData/>
    <SingleValueDropDown/>
    <MultiValueDropDown/>
    <DropdownButton/>
+   <Range/>
+   <MapComp  />
+   
+ 
 
 
     </div>
